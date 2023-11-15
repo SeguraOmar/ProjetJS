@@ -62,14 +62,23 @@ jQuery(document).ready(function ($) {
 	bouton.addEventListener("click", function () {
 
 		for (let [key, album] of albums.entries()) {
+			
+			for (let [idSerie, serie] of series.entries()) {
 
+				if (idSerie == album.idSerie && txtSerie.value == serie.nom) {
+					getAlbum(key)
+					return;
+				}
+				
+	
+		
 			for (let [idAuteur, auteur] of auteurs.entries()) {
 				if (idAuteur == album.idAuteur && txtAuteur.value == auteur.nom) {
 					getAlbum(key)
 					return;
 
 				}
-			}
+
 
 			if (txtTitre.value == album.titre) {
 				getAlbum(key)
@@ -77,8 +86,8 @@ jQuery(document).ready(function ($) {
 			}
 
 
-		}
-	})
+		}}
+	}})
 
 	imgAlbum.addEventListener("error", function () {
 		prbImg(this)
